@@ -88,12 +88,16 @@ class AutoloaderPath {
     protected function includeControllersModelsEntities($class) {
         //Include the Extended Classes
         foreach ($this->internalStructure as $Directory) {
-            $this->includeTheFile( $this->autoloadPath . '/'.$Directory.'/' . $class . '.php' );
+            if($this->includeTheFile( $this->autoloadPath . '/'.$Directory.'/' . $class . '.php' )) {
+                return true;
+            }
         }
 
         //Include the None Extended Classes
         foreach ($this->internalStructure as $Directory) {
-            $this->includeTheFile( $this->autoloadPath . '/'.$Directory.'/' . $this->strLastReplace('Extended','',$class) . '.php' );
+            if($this->includeTheFile( $this->autoloadPath . '/'.$Directory.'/' . $this->strLastReplace('Extended','',$class) . '.php' )) {
+                return true;
+            }
         }
 
     }
@@ -108,6 +112,8 @@ class AutoloaderPath {
         if(file_exists($path)) {
             /** @noinspection PhpIncludeInspection */
             require_once ($path);
+
+            return true;
         }
     }
 
