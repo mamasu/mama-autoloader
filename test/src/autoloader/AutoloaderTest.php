@@ -25,7 +25,7 @@ class AutoloaderTest extends \PHPUnit_Framework_TestCase {
      * This method is called before a test is executed.
      */
     public static function setUpBeforeClass() {
-        self::$prefix = __DIR__ . '/../../../src/';
+        self::$prefix = __DIR__ . '/../';
         //include_once __DIR__ . '/../include.php';
     }
 
@@ -36,11 +36,11 @@ class AutoloaderTest extends \PHPUnit_Framework_TestCase {
      * @group production
      */
     public function testMKPFilesystem() {
-        $autoloader = new Autoloader(array('controllers', 'models', 'entities'),self::$prefix.'loader');
+        $autoloader = new Autoloader(array('controllers', 'models', 'entities'), self::$prefix);
         //$autoloader = new MmfAutoloader();
-        
-        $autoloader->addNewMmfAutoloadPath(__DIR__ . '/../mktfilesystem/custom/reseller1/core');
-        $autoloader->addNewMmfAutoloadPath(__DIR__ . '/../mktfilesystem/base/core');
+
+        $autoloader->addNewMmfAutoloadPath('mktfilesystem/custom/reseller1/core');
+        $autoloader->addNewMmfAutoloadPath('mktfilesystem/base/core');
 
         $a = new Prova();
         $b = new Prova2();
@@ -63,10 +63,10 @@ class AutoloaderTest extends \PHPUnit_Framework_TestCase {
      * @group production
      */
     public function testMmfFilesystem() {
-        $autoloader = new Autoloader(array('controllers', 'models', 'entities'),self::$prefix.'loader');
+        $autoloader = new Autoloader(array('controllers', 'models', 'entities'), self::$prefix);
         //$autoloader = new MmfAutoloader();
-        $autoloader->addNewMmfAutoloadPath('/mmffilesystem/');
-        $autoloader->addNewAutoloadPath('../mmffilesystem/libs/libtest/');
+        $autoloader->addNewMmfAutoloadPath('mmffilesystem/');
+        $autoloader->addNewAutoloadPath('mmffilesystem/libs/libtest/');
 
         $a = new ProvaMmf();
         $b = new ProvaMmfEntities();
