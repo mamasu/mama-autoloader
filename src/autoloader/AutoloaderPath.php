@@ -89,18 +89,11 @@ class AutoloaderPath {
     protected function includeControllersModelsEntities($class) {
         //Include the Extended Classes
         foreach ($this->internalStructure as $Directory) {
-            if($this->includeTheFile( $this->autoloadPath . '/'.$Directory.'/' . $class . '.php' )) {
+            if ($this->includeTheFile ($this->autoloadPath . '/' . $Directory . '/' . $class . '.php')) {
                 return true;
             }
         }
 
-        //Include the None Extended Classes
-        foreach ($this->internalStructure as $Directory) {
-            if($this->includeTheFile( $this->autoloadPath . '/'.$Directory.'/' . $this->strLastReplace('Extended','',$class) . '.php' )) {
-                return true;
-            }
-        }
-        
         return false;
     }
 
@@ -119,23 +112,5 @@ class AutoloaderPath {
             return true;
         }
         return false;
-    }
-
-    /**
-     * Replace the last ocurrence of search
-     *
-     * @param string $search
-     * @param string $replace
-     * @param string $subject
-     * @return string
-     */
-    protected function strLastReplace($search, $replace, $subject) {
-        $pos = strrpos($subject, $search);
-
-        if($pos !== false) {
-            $subject = substr_replace($subject, $replace, $pos, strlen($search));
-        }
-
-        return $subject;
     }
 }

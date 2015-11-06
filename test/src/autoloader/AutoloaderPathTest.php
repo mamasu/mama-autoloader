@@ -1,6 +1,6 @@
 <?php
 
-use Mmf\Autoloader\Autoloader;
+use Mmf\Autoloader\AutoloaderPath;
 /*
  * This file is part of the Mamasu Framework package.
  *
@@ -16,7 +16,7 @@ use Mmf\Autoloader\Autoloader;
  * @author Xavier Casahuga <xavier.casahuga@mamasu.es>
  *
  */
-class AutoloaderTest extends \PHPUnit_Framework_TestCase {
+class AutoloaderPathTest extends \PHPUnit_Framework_TestCase {
 
     protected static $prefix;
 
@@ -35,7 +35,7 @@ class AutoloaderTest extends \PHPUnit_Framework_TestCase {
      * @group production
      */
     public function testMKPFilesystem() {
-        $autoloader = new Autoloader(array('controllers', 'models', 'entities'), self::$prefix);
+        /*$autoloader = new Autoloader(array('controllers', 'models', 'entities'), self::$prefix);
 
         $autoloader->addNewMmfAutoloadPath('mktfilesystem/custom/reseller1/core');
         $autoloader->addNewMmfAutoloadPath('mktfilesystem/base/core');
@@ -51,7 +51,7 @@ class AutoloaderTest extends \PHPUnit_Framework_TestCase {
         unset($autoloader);
         unset($a);
         unset($b);
-        unset($c);
+        unset($c);*/
     }
 
     /**
@@ -61,7 +61,7 @@ class AutoloaderTest extends \PHPUnit_Framework_TestCase {
      * @group production
      */
     public function testMmfFilesystem() {
-        $autoloader = new Autoloader(array('controllers', 'models', 'entities'), self::$prefix);
+        /*$autoloader = new Autoloader(array('controllers', 'models', 'entities'), self::$prefix);
         //$autoloader = new MmfAutoloader();
         $autoloader->addNewMmfAutoloadPath('mmffilesystem/');
         $autoloader->addNewAutoloadPath('mmffilesystem/libs/libtest/');
@@ -77,35 +77,6 @@ class AutoloaderTest extends \PHPUnit_Framework_TestCase {
         unset($autoloader);
         unset($a);
         unset($b);
-        unset($c);
-    }
-    
-    /**
-     * @group loader
-     * @group modules
-     * @group development
-     * @group production
-     */
-    public function testGetAndSetStructure() {
-        $autoloader = new Autoloader();
-        $this->assertEquals($autoloader->getStructure(), array('controllers', 'models', 'entities'), 'Get bad structure from constructor');
-        $autoloader->setStructure(['test']);
-        $this->assertEquals($autoloader->getStructure(), ['test'], 'Get bad test structure when we set it manually');
-        $autoloader1 = new Autoloader(['test'], self::$prefix);
-        $this->assertEquals($autoloader1->getStructure(), ['test'], 'Get bad test structure when we set it different than usually in constructor');
-    }
-    
-    /**
-     * @group loader
-     * @group modules
-     * @group development
-     * @group production
-     */
-    public function testGetURLBase() {
-        $autoloader = new Autoloader([], 'thisistheurlbase');
-        $this->assertEquals($autoloader->getURLBase(), 'thisistheurlbase', 'The URL Base is not set correctly in constructor');
-        $autoloader1 = new Autoloader();        
-        $isSrcAutoloaderInURLBase = strpos($autoloader1->getURLBase(), 'src/autoloader')!==false?true:false;
-        $this->assertEquals(true, $isSrcAutoloaderInURLBase, 'The URL Base is not set correctly in constructor when we did not pass');
+        unset($c);*/
     }
 }
