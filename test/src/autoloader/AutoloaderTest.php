@@ -26,7 +26,6 @@ class AutoloaderTest extends \PHPUnit_Framework_TestCase {
      */
     public static function setUpBeforeClass() {
         self::$prefix = __DIR__ . '/../';
-        //include_once __DIR__ . '/../include.php';
     }
 
     /**
@@ -37,7 +36,6 @@ class AutoloaderTest extends \PHPUnit_Framework_TestCase {
      */
     public function testMKPFilesystem() {
         $autoloader = new Autoloader(array('controllers', 'models', 'entities'), self::$prefix);
-        //$autoloader = new MmfAutoloader();
 
         $autoloader->addNewMmfAutoloadPath('mktfilesystem/custom/reseller1/core');
         $autoloader->addNewMmfAutoloadPath('mktfilesystem/base/core');

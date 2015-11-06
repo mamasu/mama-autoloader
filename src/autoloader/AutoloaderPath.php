@@ -84,6 +84,7 @@ class AutoloaderPath {
      * Include the common directories of .
      *
      * @param string $class
+     * @return bool
      */
     protected function includeControllersModelsEntities($class) {
         //Include the Extended Classes
@@ -99,13 +100,15 @@ class AutoloaderPath {
                 return true;
             }
         }
-
+        
+        return false;
     }
 
     /**
      * Include the file if exists
      *
      * @param string $path
+     * @return bool
      */
     protected function includeTheFile($path) {
         $path = $this->urlBase    .$path;
@@ -115,6 +118,7 @@ class AutoloaderPath {
 
             return true;
         }
+        return false;
     }
 
     /**
